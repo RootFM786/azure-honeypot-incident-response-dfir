@@ -1,6 +1,6 @@
 # Evidence
 
-Screenshots and supporting material from the Azure honeypot incident-response exercise, organised to mirror the original SecOps6 project phases.
+Screenshots and supporting material from the Azure honeypot investigation, organised by incident-response phase.
 
 - [`00-honeypot-architecture/`](00-honeypot-architecture/)
 - [`01-build-vm/`](01-build-vm/)
