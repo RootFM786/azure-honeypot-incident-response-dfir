@@ -1,6 +1,6 @@
 # Evidence
 
-Curated screenshots from the Azure honeypot incident-response exercise, organised to mirror the original SecOps6 project phases exactly.
+Screenshots and supporting material from the Azure honeypot incident-response exercise, organised to mirror the original SecOps6 project phases.
 
 - [`00-honeypot-architecture/`](00-honeypot-architecture/)
 - [`01-build-vm/`](01-build-vm/)
@@ -14,4 +14,4 @@ Curated screenshots from the Azure honeypot incident-response exercise, organise
 - [`09-eradication-and-recovery/`](09-eradication-and-recovery/)
 - [`10-report/`](10-report/)
 
-The main project README highlights a concise selection of key evidence, while these folders contain the broader supporting set.
+Each folder contains the evidence and notes for its corresponding project phase.
