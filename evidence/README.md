@@ -1,12 +1,17 @@
 # Evidence
 
-Curated screenshots from the Azure honeypot incident-response exercise are organised by investigation phase.
+Curated screenshots from the Azure honeypot incident-response exercise, organised to mirror the original SecOps6 project phases exactly.
 
-- `01-architecture-and-build/`
-- `02-logging-and-detections/`
-- `03-exposure-and-detection/`
-- `04-investigation/`
-- `05-containment/`
-- `06-eradication-and-recovery/`
+- [`00-honeypot-architecture/`](00-honeypot-architecture/)
+- [`01-build-vm/`](01-build-vm/)
+- [`02-install-and-populate-mysql/`](02-install-and-populate-mysql/)
+- [`03-wire-logging-to-log-analytics/`](03-wire-logging-to-log-analytics/)
+- [`04-write-detections/`](04-write-detections/)
+- [`05-weaken-and-expose/`](05-weaken-and-expose/)
+- [`06-detect-the-breach/`](06-detect-the-breach/)
+- [`07-analyse-the-breach/`](07-analyse-the-breach/)
+- [`08-contain-the-breach/`](08-contain-the-breach/)
+- [`09-eradication-and-recovery/`](09-eradication-and-recovery/)
+- [`10-report/`](10-report/)
 
 The main project README will embed only the strongest recruiter-facing evidence, while these folders retain the broader supporting set.
