@@ -14,4 +14,4 @@ Curated screenshots from the Azure honeypot incident-response exercise, organise
 - [`09-eradication-and-recovery/`](09-eradication-and-recovery/)
 - [`10-report/`](10-report/)
 
-The main project README will embed only the strongest recruiter-facing evidence, while these folders retain the broader supporting set.
+The main project README highlights a concise selection of key evidence, while these folders contain the broader supporting set.
