@@ -1,0 +1,48 @@
+// Two independent queries. Select and run one complete block at a time,
+// including its let statements. Do not run both blocks as one query.
+
+// A3 Host process activity
+// Source: Cyber Defence Incident Report, Appendix A3.
+// Original query has a start-time filter only; no incident end time is applied.
+// Verify original-host identity before attributing returned events.
+// Broad process review; no Masscan, WinPcap or malicious-process filter is applied.
+// Virtual Machine Process Activity
+let MyDevice = "corp-neo10-f777";
+let ServerVulnerableDateTime = todatetime("2026-09-14T22:14:02Z");
+
+DeviceProcessEvents
+| where TimeGenerated > ServerVulnerableDateTime
+| where DeviceName == MyDevice
+| project TimeGenerated,
+          AccountName,
+          DeviceName,
+          ProcessCommandLine,
+          InitiatingProcessCommandLine,
+          FolderPath,
+          FileName
+| order by TimeGenerated desc
+
+// END A3
+
+// A4 Administrator process activity
+// Source: Cyber Defence Incident Report, Appendix A4.
+// Original query has a start-time filter only; no incident end time is applied.
+// Administrator-only review; other accounts are excluded.
+// Execution and command lines do not establish successful scanning or exploitation.
+// Administrator Process Activity
+let MyDevice = "corp-neo10-f777";
+let ServerVulnerableDateTime = todatetime("2026-09-14T22:14:02Z");
+
+DeviceProcessEvents
+| where TimeGenerated > ServerVulnerableDateTime
+| where DeviceName == MyDevice
+| where AccountName == "administrator"
+| project TimeGenerated,
+          AccountName,
+          DeviceName,
+          ProcessCommandLine,
+          InitiatingProcessCommandLine,
+          FolderPath,
+          FileName
+| order by TimeGenerated desc
+// END A4

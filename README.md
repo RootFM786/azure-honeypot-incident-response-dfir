@@ -165,6 +165,7 @@ WinPcap installation alone does not establish packet capture. The exact role of 
 
 - [Evidence folders](evidence/) — 41 images with descriptions covering build, monitoring, exposure, investigation and recovery.
 - [Cyber Defence Incident Report](<evidence/10-report/Cyber Defence Incident Report.docx>) — Detailed timeline, forensic comparison, findings, limitations and investigation queries.
+- **Investigation queries:** [KQL hunting queries](queries/)
 
 The report documents the underlying log and investigation-package analysis; those raw artifacts are not currently published in this repository.
 

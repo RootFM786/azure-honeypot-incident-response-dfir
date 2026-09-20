@@ -1,0 +1,54 @@
+// A7 MySQL authentication
+// Source: Cyber Defence Incident Report, Appendix A7.
+// Original query has a start-time filter only; no incident end time is applied.
+// LogonSuccess is derived by this query, not a native MySQL authentication outcome.
+// Blank Connect records can be labelled successful; validate RawData.
+// The report confirmed 45 explicit root connections among 49 success-labelled rows.
+// ConnectionId is retained in the original logic as the failure-correlation key.
+// MySQL Authentication
+let MyDevice = "corp-neo10-f777m";
+let MyTimeframe = datetime(2026-09-14T22:14:02Z);
+
+let FailedConnections =
+MySQLAudit_CL
+| where TimeGenerated > MyTimeframe
+| extend RawData = replace_string(RawData, "\t", " ")
+| extend DeviceName = tostring(split(_ResourceId, "/")[-1])
+| where DeviceName == MyDevice
+| where RawData has "Access denied"
+| extend ConnectionId = extract(@"^\S+\s+(\d+)\s+Connect", 1, RawData)
+| where isnotempty(ConnectionId)
+| distinct ConnectionId;
+
+MySQLAudit_CL
+| where TimeGenerated > MyTimeframe
+| extend RawData = replace_string(RawData, "\t", " ")
+| extend DeviceName = tostring(split(_ResourceId, "/")[-1])
+| where DeviceName == MyDevice
+| where RawData has "Connect"
+| extend ConnectionId = extract(@"^\S+\s+(\d+)\s+Connect", 1, RawData)
+| extend ActionType =
+    case(
+        RawData has "Access denied", "LogonFailure",
+        ConnectionId in (FailedConnections), "Ignore",
+        "LogonSuccess"
+    )
+| where ActionType != "Ignore"
+| extend RawData = replace_string(RawData, "\t", " ")
+| extend Username = replace_string(
+    tostring(split(tostring(split(RawData, "@")[0]), " ")[-1]),
+    "'",
+    ""
+)
+| extend IpAddress = replace_string(
+    tostring(split(split(RawData, "@")[1], " ")[0]),
+    "'",
+    ""
+)
+| project TimeGenerated,
+          DeviceName,
+          Username,
+          IpAddress,
+          ActionType,
+          RawData
+| order by TimeGenerated desc

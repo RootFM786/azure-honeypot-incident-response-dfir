@@ -1,0 +1,18 @@
+// A5 File activity
+// Source: Cyber Defence Incident Report, Appendix A5.
+// Original query has a start-time filter only; no incident end time is applied.
+// 12:29:04 is the original search threshold, not the 12:29:06 RemoteInteractive event.
+// Verify original-host identity; returned file events are not all malicious.
+let FirstSuccessfulLogonTime = todatetime("2026-09-15T12:29:04Z");
+let MyDevice = "corp-neo10-f777";
+
+DeviceFileEvents
+| where TimeGenerated >= FirstSuccessfulLogonTime
+| where DeviceName == MyDevice
+| project TimeGenerated,
+          InitiatingProcessAccountName,
+          InitiatingProcessCommandLine,
+          FolderPath,
+          FileName,
+          DeviceName
+| order by TimeGenerated desc

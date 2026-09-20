@@ -1,0 +1,28 @@
+// A9 DeviceNetworkEvents incident-window review
+// Source: Cyber Defence Incident Report, Appendix A9.
+// Original incident-window export query; includes both original and replacement hosts.
+// Original host: LocalIP 10.1.0.10. Replacement-host traffic: LocalIP 10.1.0.105.
+// No LocalIP, RemotePort, ActionType or process filter is applied in this original query.
+// Scope results to the original host before attributing activity to the compromise.
+// Failed RDP attempts support attempted lateral movement, not successful compromise.
+// Successful connections alone do not establish C2, transferred content or exfiltration.
+let MyDevice = "corp-neo10-f777";
+let StartTime = datetime(2026-09-14T22:14:02Z);
+let EndTime = datetime(2026-09-18T22:41:13Z);
+
+DeviceNetworkEvents
+| where TimeGenerated between (StartTime .. EndTime)
+| where DeviceName == MyDevice
+| project TimeGenerated,
+          ActionType,
+          LocalIP,
+          LocalPort,
+          RemoteIP,
+          RemotePort,
+          RemoteUrl,
+          Protocol,
+          InitiatingProcessAccountName,
+          InitiatingProcessFileName,
+          InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine
+| order by TimeGenerated asc

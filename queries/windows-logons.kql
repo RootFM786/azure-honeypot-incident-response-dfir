@@ -1,0 +1,35 @@
+// Two independent queries. Select and run one complete block at a time,
+// including its let statements. Do not run both blocks as one query.
+
+// A1 Windows account logons
+// Source: Cyber Defence Incident Report, Appendix A1.
+// Original query has a start-time filter only; no incident end time is applied.
+// DeviceName alone can include the replacement host; verify host identity.
+// Results include multiple logon types and outcomes; assess ActionType and LogonType.
+// Virtual Machine Logons
+let MyDevice = "corp-neo10-f777";
+let ServerVulnerableDateTime = todatetime("2026-09-14T22:14:02Z");
+
+DeviceLogonEvents
+| where TimeGenerated > ServerVulnerableDateTime
+| where DeviceName == MyDevice
+| where AccountName in~ ("administrator", "guest")
+| project TimeGenerated, RemoteIP, AccountName, DeviceName, ActionType, LogonType
+
+// END A1
+
+// A2 Successful Windows logons
+// Source: Cyber Defence Incident Report, Appendix A2.
+// Original query has a start-time filter only; no incident end time is applied.
+// DeviceName alone can include the replacement host; verify host identity.
+// LogonSuccess includes more than RDP; inspect LogonType for RemoteInteractive.
+let MyDevice = "corp-neo10-f777";
+let ServerVulnerableDateTime = todatetime("2026-09-14T22:14:02Z");
+
+DeviceLogonEvents
+| where TimeGenerated > ServerVulnerableDateTime
+| where DeviceName == MyDevice
+| where AccountName in~ ("administrator", "guest")
+| where ActionType == "LogonSuccess"
+| project TimeGenerated, RemoteIP, AccountName, DeviceName, ActionType, LogonType
+// END A2

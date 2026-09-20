@@ -1,0 +1,21 @@
+// A6 Registry activity
+// Source: Cyber Defence Incident Report, Appendix A6.
+// Original query has a start-time filter only; no incident end time is applied.
+// 12:29:04 is the original search threshold, not the 12:29:06 RemoteInteractive event.
+// Broad registry review; no executable-handler-key filter is applied.
+// Verify original-host identity and assess individual changes in context.
+let FirstSuccessfulLogonTime = todatetime("2026-09-15T12:29:04Z");
+let MyDevice = "corp-neo10-f777";
+
+DeviceRegistryEvents
+| where TimeGenerated >= FirstSuccessfulLogonTime
+| where DeviceName == MyDevice
+| project TimeGenerated,
+          InitiatingProcessAccountName,
+          InitiatingProcessCommandLine,
+          ActionType,
+          RegistryKey,
+          RegistryValueName,
+          RegistryValueData,
+          DeviceName
+| order by TimeGenerated desc

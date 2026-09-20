@@ -1,0 +1,19 @@
+// A8 SQL statements after exposure
+// Source: Cyber Defence Incident Report, Appendix A8.
+// Original query has a start-time filter only; no incident end time is applied.
+// The general log records statements issued, not returned rows or SQL success codes.
+// SELECT activity does not prove exfiltration; destructive statements need outcome evidence.
+// Filtering Queries
+let MyDevice = "corp-neo10-f777m";
+let ServerVulnerableDateTime = todatetime("2026-09-14T22:14:02Z");
+
+MySQLAudit_CL
+| where TimeGenerated > ServerVulnerableDateTime
+| where RawData has "Query"
+| extend RawData = replace_string(RawData, "\t", " ")
+| extend DeviceName = tostring(split(_ResourceId, "/")[-1])
+| where DeviceName == MyDevice
+| extend ActionType = "Query"
+| extend Query = split(RawData, "Query")[1]
+| project TimeGenerated, DeviceName, ActionType, Query, RawData
+| order by TimeGenerated desc
