@@ -1,6 +1,6 @@
 # Evidence
 
-Screenshots and supporting material from the Azure honeypot investigation, organised by incident-response phase.
+Screenshots and supporting evidence from the Azure honeypot investigation, organised in the order the project was completed.
 
 - [`00-honeypot-architecture/`](00-honeypot-architecture/)
 - [`01-build-vm/`](01-build-vm/)
