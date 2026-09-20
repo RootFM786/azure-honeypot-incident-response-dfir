@@ -2,10 +2,11 @@
 
 ## Purpose
 
-Create detection logic for identifying suspicious activity against the honeypot.
+Create Microsoft Sentinel detection logic for identifying suspicious Windows and MySQL activity against the honeypot.
 
 ## Evidence
 
-- [Detection rule configuration](<P4-01 - Detection Rule Configuration.png>) — Shows the configured analytics rule used to turn matching telemetry into actionable security detections.
+- [Detection rule configuration](<P4-01 - Detection Rule Configuration.png>) — Shows detailed configuration of the Windows logon analytics rule.
+- [MySQL detection rule enabled](<P4-04 - MySQL Detection Rule Enabled.png>) — Shows the custom Sentinel analytics rules present and enabled before exposure.
 
-This is the clearest retained evidence of the detection-engineering work completed in this phase.
+These screenshots demonstrate the configuration and activation of the exercise’s detection rules.

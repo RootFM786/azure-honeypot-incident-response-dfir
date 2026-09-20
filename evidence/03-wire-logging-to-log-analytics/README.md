@@ -6,6 +6,7 @@ Route MySQL telemetry into Azure Log Analytics so database activity could be sea
 
 ## Evidence
 
-- [MySQL DCR log source](<P3-01 - MySQL DCR Log Source.png>) — Shows MySQL configured as a log source through the Azure data-collection pipeline.
+- [MySQL DCR log source](<P3-01 - MySQL DCR Log Source.png>) — Shows MySQL configured as a custom log source through the Azure data-collection pipeline.
+- [MySQL log ingestion verified](<P3-04 - MySQL Log Ingestion Verified.png>) — Confirms that MySQL audit records were successfully available in Log Analytics for querying.
 
-This single screenshot is retained because it directly records the key integration completed during this phase.
+Together, these screenshots document both the collection configuration and the resulting searchable telemetry.

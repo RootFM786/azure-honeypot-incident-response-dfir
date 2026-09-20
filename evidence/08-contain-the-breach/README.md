@@ -2,10 +2,11 @@
 
 ## Purpose
 
-Preserve relevant endpoint evidence while the response moved into containment.
+Isolate the affected endpoint and preserve relevant evidence for continued investigation.
 
 ## Evidence
 
-- [Post-breach investigation package collection](<P8-03 - Post-Breach Investigation Package Collection.png>) — Records collection of an investigation package for later forensic review.
+- [Defender device isolation initiated](<P8-01 - Defender Device Isolation Initiated.png>) — Records initiation of device isolation in Microsoft Defender as the containment action.
+- [Post-breach investigation package collected](<P8-03 - Post-Breach Investigation Package Collection.png>) — Records collection of an investigation package for forensic review and preservation.
 
-This screenshot is retained as the clearest evidence of the preservation activity completed during this phase.
+Together, these screenshots demonstrate the containment and evidence-preservation actions taken during the response.
