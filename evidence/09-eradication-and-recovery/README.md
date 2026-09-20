@@ -6,7 +6,7 @@ Remove the unsafe exposure, replace the compromised system and restore essential
 
 ## Evidence
 
-- [Malicious allow-all NSG rule removed](<P9-01 - Malicious Allow-All NSG Rule Removed.png>) — Shows removal of the permissive inbound network rule.
+- [Permissive allow-all NSG rule removed](<P9-01 - Permissive Allow-All NSG Rule Removed.png>) — Shows removal of the deliberately permissive inbound network rule used for the honeypot exposure.
 - [Replacement VM creation configured](<P9-11 - Replacement VM Creation Configured.png>) — Records configuration of the clean replacement host.
 - [Replacement VM onboarded to Defender](<P9-12 - Replacement VM Onboarded to Defender.png>) — Confirms security visibility for the replacement endpoint.
 - [Compromised VM deletion initiated](<P9-13 - Compromised VM Deletion Initiated.png>) — Records retirement of the compromised system.
